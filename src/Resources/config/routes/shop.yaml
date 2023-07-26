@@ -1,0 +1,17 @@
+monsieurbiz_advanced_shipping_shop_pickup_point_list:
+    path: /advanced-shipping/pickup-points/{methodId}/{format}
+    methods: [GET]
+    defaults:
+        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingAddressProviderController::pickupPointListAction
+        format: html
+        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Shop/AddressProvider/pickupPointList.html.twig'
+
+monsieurbiz_advanced_shipping_shop_search_address:
+    path: /advanced-shipping/address-search/{provider}/{_format}
+    methods: [POST]
+    defaults:
+        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\AddressAutocompleteProviderController::searchAddressAction
+        _format: html
+        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Shop/AddressAutocompleteProvider/addressList.html.twig'
+    requirements:
+        _format:  html|json

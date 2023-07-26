@@ -1,0 +1,54 @@
+<style>
+    .hidden {
+        display: none!important;
+    }
+    .selected {
+        color: #dc3545;
+    }
+</style>
+{% set hasPickupPoint = form.addressProvider.vars.pickup_point is not null %}
+{% set mapProvider = provider.configuration.mapProviderConfiguration|load_map_provider %}
+
+<div
+    data-shipping-method="{{ method.code }}"
+    data-component="pickup-point-map"
+    data-map-url="{{ mapProvider.url }}"
+    data-map-parameters="{{ mapProvider.parameters|json_encode }}"
+    data-service-url="{{ url('monsieurbiz_advanced_shipping_shop_pickup_point_list', {methodId: method.id}) }}"
+    data-active-marker-icon="{{ asset('/bundles/MonsieurBizSyliusAdvancedShippingPlugin/images/marker-red.png') }}"
+    data-unactive-marker-icon="{{ asset('/bundles/MonsieurBizSyliusAdvancedShippingPlugin/images/marker-yellow.png') }}"
+>
+    {{ form_widget(form.addressProvider.pickupPoint) }}
+    {% if form.addressProvider.pickupPoint.vars.errors|length %}
+        <div class="ui red message">
+            {{ 'monsieurbiz_advanced_shipping.ui.empty_pickup_point'|trans }}
+        </div>
+    {% endif %}
+
+    {{ form_row(form.addressProvider.firstName) }}
+    {{ form_row(form.addressProvider.lastName) }}
+    <div class="{{ hasPickupPoint ? 'hidden' : '' }} pickup-search-field" data-target="search-zone">
+        <div class="text-medium-large black-color is-bold">{{ 'app.ui.select_the_relay_point'|trans }}</div>
+        <div class="text-small black-color">{{ 'app.ui.select_the_relay_point_descritpion'|trans }}</div>
+        {{ form_row(form.addressProvider.location) }}
+    </div>
+    <div class="full-width hidden" data-target="choice-zone">
+        <div class="full-width pickup-result ">
+            <div data-target="loading-zone" class="ui inverted dimmer"><div class="ui loader"></div></div>
+            <div class="pickup-result-map-container" data-target="map-zone">
+            </div>
+            <div class="pickup-result-list-container" data-target="list-zone">
+            </div>
+        </div>
+    </div>
+    <div class="{{ hasPickupPoint ? '' : ' hidden' }}" data-target="selected-zone">
+        <div class="text-medium-large black-color is-bold margin-top-5">
+            {{ 'monsieurbiz_advanced_shipping.ui.your_pickup_point'|trans }}
+        </div>
+        <div data-target="selected-address-zone">
+            {% if hasPickupPoint %}
+                {% include '@MonsieurBizSyliusAdvancedShippingPlugin/Shop/Checkout/SelectShipping/Shipment/AddressProvider/PickupPointAddressProvider/_pickupPoint.html.twig' with { pickupPoint: form.addressProvider.vars.pickup_point } %}
+            {% endif %}
+        </div>
+    </div>
+</div>

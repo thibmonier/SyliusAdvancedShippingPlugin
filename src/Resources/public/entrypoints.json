@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "advanced-shipping": {
+      "css": [
+        "/public/css/advanced-shipping.css"
+      ],
+      "js": [
+        "/public/js/advanced-shipping.js"
+      ]
+    }
+  }
+}

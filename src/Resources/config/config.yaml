@@ -1,0 +1,10 @@
+imports:
+    - { resource: 'sylius/ui.yaml' }
+    - { resource: 'sylius/resources.yaml' }
+    - { resource: 'sylius/grids.yaml' }
+    - { resource: 'services/form_types.yaml' }
+
+twig:
+    form_themes: 
+        - '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Form/theme.html.twig'
+        - '@MonsieurBizSyliusAdvancedShippingPlugin/Form/theme.html.twig'

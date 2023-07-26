@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Shipping\ShippingType:
+        arguments:
+            $dataClass: "%monsieurbiz_advanced_shipping.model.shipping_type.class%"
+            $validationGroups: [monsieurbiz_advanced_shipping]
+            
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Shipping\ShippingTypeTranslation:
+        arguments:
+            $dataClass: "%monsieurbiz_advanced_shipping.model.shipping_type_translation.class%"
+            $validationGroups: [ monsieurbiz_advanced_shipping ]

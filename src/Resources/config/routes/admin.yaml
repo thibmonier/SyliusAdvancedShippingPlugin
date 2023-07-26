@@ -1,0 +1,146 @@
+monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration:
+    resource: |
+        alias: monsieurbiz_advanced_shipping.shipping_calculator_configuration
+        section: admin
+        permission: true
+        except: ['show', 'bulkUpdate', 'bulkDelete']
+        templates: '@SyliusAdmin/Crud'
+        grid: monsieurbiz_advanced_shipping_admin_shipping_calculator_configurations
+        vars:
+            index:
+                icon: 'money'
+            all:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/_form.html.twig"
+    type: sylius.resource
+    
+monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_create:
+    path: /calculator-configurations/new/{calculator}
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_advanced_shipping.controller.shipping_calculator_configuration:createAction
+        _sylius:
+            section: admin
+            factory:
+                method: createWithCalculator
+                arguments:
+                    gatewayFactory: $calculator
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_update
+            permission: true
+            vars:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/_form.html.twig"
+                route:
+                    parameters:
+                        calculator: $calculator
+
+monsieurbiz_advanced_shipping_admin_get_shipping_calculators:
+    path: /shipping-calculators
+    methods: [GET]
+    defaults:
+        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingCalculatorController::getListAction
+        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/list.html.twig'
+
+monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration:
+    resource: |
+        alias: monsieurbiz_advanced_shipping.shipping_address_provider_configuration
+        section: admin
+        permission: true
+        except: ['show', 'bulkUpdate', 'bulkDelete']
+        templates: '@SyliusAdmin/Crud'
+        grid: monsieurbiz_advanced_shipping_admin_shipping_address_provider_configurations
+        vars:
+            index:
+                icon: 'address card'
+            all:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/_form.html.twig"
+    type: sylius.resource
+
+monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration_create:
+    path: /address-provider-configurations/new/{provider}
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_advanced_shipping.controller.shipping_address_provider_configuration:createAction
+        _sylius:
+            section: admin
+            factory:
+                method: createWithAddressProvider
+                arguments:
+                    gatewayFactory: $provider
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration_update
+            permission: true
+            vars:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/_form.html.twig"
+                route:
+                    parameters:
+                        provider: $provider
+
+monsieurbiz_advanced_shipping_admin_get_shipping_address_providers:
+    path: /shipping-adress-providers
+    methods: [GET]
+    defaults:
+        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingAddressProviderController::getProviderListAction
+        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/list.html.twig'
+        
+monsieurbiz_advanced_shipping_admin_shipping_type:
+    resource: |
+        alias: monsieurbiz_advanced_shipping.shipping_type
+        section: admin
+        templates: "@SyliusAdmin/Crud"
+        redirect: index
+        permission: true
+        except: ['show', 'bulkUpdate', 'bulkDelete']
+        grid: monsieurbiz_advanced_shipping_admin_shipping_shipping_types
+        vars:
+            index:
+                icon: 'map'
+    type: sylius.resource
+
+
+monsieurbiz_advanced_shipping_admin_map_provider_configuration:
+    resource: |
+        alias: monsieurbiz_advanced_shipping.map_provider_configuration
+        section: admin
+        permission: true
+        except: ['show', 'bulkUpdate', 'bulkDelete']
+        templates: '@SyliusAdmin/Crud'
+        grid: monsieurbiz_advanced_shipping_admin_map_provider_configurations
+        vars:
+            index:
+                icon: 'address card'
+            all:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/MapProvider/_form.html.twig"
+    type: sylius.resource
+
+monsieurbiz_advanced_shipping_admin_map_provider_configuration_create:
+    path: /map_provider-configurations/new/{provider}
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_advanced_shipping.controller.map_provider_configuration:createAction
+        _sylius:
+            section: admin
+            factory:
+                method: createWithProviderName
+                arguments:
+                    gatewayFactory: $provider
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_advanced_shipping_admin_map_provider_configuration_update
+            permission: true
+            vars:
+                templates:
+                    form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/MapProvider/_form.html.twig"
+                route:
+                    parameters:
+                        provider: $provider
+
+monsieurbiz_advanced_shipping_admin_get_map_providers:
+    path: /map-providers
+    methods: [GET]
+    defaults:
+        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\MapProviderController::getProviderListAction
+        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/MapProvider/list.html.twig'

@@ -1,0 +1,25 @@
+MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingCalculatorConfiguration:
+    constraints:
+        -   Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                fields: [calculator, code]
+                errorPath: code
+                groups: [monsieurbiz_advanced_shipping]
+    properties:
+        code:
+            -   NotBlank:
+                    groups: [monsieurbiz_advanced_shipping]
+            -   Length:
+                    min: 2
+                    max: 255
+                    groups: [monsieurbiz_advanced_shipping]
+        calculator:
+            -   NotBlank:
+                    groups: [monsieurbiz_advanced_shipping]
+        configuration:
+            -   NotBlank:
+                    groups: [monsieurbiz_advanced_shipping]
+            -   Valid:
+                    groups: [monsieurbiz_advanced_shipping]           
+        translations:
+            -   Valid:
+                    groups: [monsieurbiz_advanced_shipping]            

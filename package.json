@@ -1,0 +1,17 @@
+{
+  "name": "monsieurbiz-sylius-advanced-shipping-plugin",
+  "description": "Advanced configuration for shipping methods",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "encore production",
+    "watch": "encore dev --watch"
+  },
+  "author": "Monsieur Biz <hello@monsieurbiz.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^4.4.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}

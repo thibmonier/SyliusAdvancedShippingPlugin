@@ -1,0 +1,32 @@
+sylius_ui:
+    events:
+        sylius.shop.layout.javascripts:
+            blocks:
+                monsieurbiz_advanced_shipping_javascripts:
+                    template: "@MonsieurBizSyliusAdvancedShippingPlugin/_scripts.html.twig"
+        sylius.shop.layout.stylesheets:
+            blocks:
+                monsieurbiz_advanced_shipping_stylesheet:
+                    template: "@MonsieurBizSyliusAdvancedShippingPlugin/_styles.html.twig"
+        sylius.admin.layout.javascripts:
+            blocks:
+                monsieurbiz_advanced_shipping_javascripts:
+                    template: "@MonsieurBizSyliusAdvancedShippingPlugin/_scripts.html.twig"
+        sylius.admin.shipping_method.update.form:
+            blocks:
+                monsieurbiz_advanced_shipping_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/_advancedShippingForm.html.twig'
+        monsieurbiz.advanced_shipping.admin.shipping_method.form:
+            blocks:
+                monsieurbiz_advanced_shipping_address_provider_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/AddressProvider/_form.html.twig'
+                monsieurbiz_advanced_shipping_shipping_type_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/ShippingType/_form.html.twig'
+        sylius.admin.shipping_method.create.form:
+            blocks:
+                monsieurbiz_advanced_shipping_shipping_type_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/ShippingType/_form.html.twig'
+        monsieurbiz.advanced_shipping.front.shipping_method:
+            blocks:
+                monsieurbiz_advanced_shipping_address_provider_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Shop/Checkout/SelectShipping/Shipment/_advancedShippingMetadataForm.html.twig'

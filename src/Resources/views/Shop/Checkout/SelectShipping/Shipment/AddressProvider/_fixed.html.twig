@@ -1,0 +1,21 @@
+{% import "@SyliusUi/Macro/flags.html.twig" as flags %}
+{% set configuration = provider.configuration %}
+
+<div class="ui segment" data-shipping-method="{{ method.code }}">
+    {{ form_row(form.addressProvider.firstName) }}
+    {{ form_row(form.addressProvider.lastName) }}
+    <div class="ui small dividing header">
+        {{ configuration.title }}
+    </div>
+    <address>
+        {% if configuration.company %}
+            {{ configuration.company }}<br/>
+        {% endif %}
+        {{ configuration.street }}<br/>
+        {{ configuration.postcode }} {{ configuration.city }}<br/>
+        {{ flags.fromCountryCode(configuration.countryCode) }}
+        {{ configuration.countryCode|sylius_country_name|upper }}
+    </address>
+    <div class="ui divider"></div>
+    {{ configuration.instructions|raw|nl2br }}
+</div>

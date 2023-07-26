@@ -1,0 +1,29 @@
+{% extends '@SyliusUi/Form/theme.html.twig' %}
+
+{% block monsieurbiz_advanced_shipment_address_provider_fixed_widget -%}
+
+    <div class="ui two column stackable grid">
+        <div class="column">
+            <h4 class="ui top attached large header">
+                {{ 'monsieurbiz_advanced_shipping.form.fixed_shipping_address_provider.general_informations'|trans }}
+            </h4>
+            <div class="ui attached segment">
+                {{ form_row(form.code) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.instructions) }}
+            </div>
+        </div>
+        <div class="column">
+            <h4 class="ui top attached large header">
+                {{ 'monsieurbiz_advanced_shipping.form.fixed_shipping_address_provider.address_informations'|trans }}
+            </h4>
+            <div class="ui attached segment">
+                {{ form_row(form.company) }}
+                {{ form_row(form.street) }}
+                {{ form_row(form.city) }}
+                {{ form_row(form.postcode) }}
+                {{ form_row(form.countryCode) }}
+            </div>
+        </div>
+    </div>
+{%- endblock monsieurbiz_advanced_shipment_address_provider_fixed_widget %}

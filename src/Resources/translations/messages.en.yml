@@ -1,0 +1,183 @@
+monsieurbiz_advanced_shipping:
+    calculator:
+        chained: Chained calculators
+        country: Country Based calculator
+        postcode: Postcode based calculator
+        total_based_table_rate: Total based table rate
+        weight_based_table_rate: Weight based table rate
+    shipping_address_provider:
+        chronopost_pickup: Chronopost Pickup
+        dpd_pickup: DPD Pickup
+        fixed: Fixed address provider
+        mondial_relay: Mondial Relay
+        colis_prive_pickup: Colis privé Pickup
+    shipping_method_rule:
+        customer_group_restriction: Restriction by customer group
+        shipping_address_postcode_restriction: Restriction by postcode
+    map_provider:
+        mapbox: Mapbox
+    form:
+        calculator: Calculator
+        chained_calculator_configuration:
+            add_calculator: Add calculator
+            calculators: Calculators
+        chronopost_pickup_shiping_address_provider:
+            api_account_number: Chronopost Pickup API account number
+            api_password:  Chronopost Pickup API password
+            api_url: Chronopost Pickup API url
+        choice_type:
+            excluded: Excluded
+            included: Included
+        code: Code
+        country_calculator_configuration:
+            comparison_type: Comparison type
+            country_code: Country
+            default_rate: Default rate
+            excluded: Excluded
+            included: Included
+            rate: Rate
+            rules: Rules
+            rules_help: |
+                Use the rules to set a shipping rate based on the country of the shipping address. Whether you use the 
+                inclusion mode, if the country of the address corresponds to a country of the rule, the rate of the rule
+                is applied. If you use the exclusion mode, in the event that the country of the address does not matches
+                no country of the rule, the rule is applied. Note that only the rate for the 1st rule valid encountered 
+                is applied.
+        customer_group_restriction:
+            customer_group: Customer group
+        dpd_pickup_shiping_address_provider:
+            api_key: DPD Pickup API key
+            api_url: DPD Pickup API url
+        fixed_shipping_address_provider:
+            address_informations: Address information
+            city: City
+            code: Code
+            company: Company
+            country: Country
+            first_name: First name
+            general_informations: General information
+            instructions: Instructions
+            last_name: Last name
+            phone_number: Phone number
+            postcode: Postcode
+            street: Street address
+            title: Title
+        map_provider: Map provider
+        mapbox_map_provider:
+            access_token: Access token
+            attribution: Attribution
+        mondial_relay_shiping_address_provider:
+            action: API action
+            identifier: API identifier
+            country: API country
+            default_delay: API default delay
+            key: API key
+            result_limit: API result limit
+            search_area: API search area
+            url: API url
+        colis_prive_pickup_shipping_address_provider:
+            url: API URL
+            account_id: Account ID
+            default_delay: API default delay
+            result_limit: API result limit
+            country_code: API country code
+        name: Name
+        postcode_calculator_configuration:
+            comparison_type: Comparison type
+            country: Country
+            default_rate: Default rate
+            excluded: Excluded
+            included: Included
+            rate: Rate
+            rule: Rule
+            rules: Rules
+            rules_help: |
+                Use the rules to set a shipping rate based on the postal code of the shipping address. Each rule 
+                consists of masks, separated by commas. You can specify specific postal codes (80120,59160,60500) or use 
+                the wildcard character * (75* for all of Paris or 2A*,2B*,20* for Corsica). If you use inclusion mode, 
+                if a postcode matches a mask, the rule rate is applied. If you use the exclusion mode, if the postal code 
+                does not match any mask, the rule is applied. Note that only the rate of the 1st valid rule encountered 
+                are applied.
+        provider: Provider
+        shipping_address_provider: Shipping address provider
+        table_rate_calculator_configuration:
+            default_rate: Default rate
+            rate: Rate
+            rate_table: Rates table
+            total_based_table: Total based table
+            total_limit: Total limit
+            total_rate_table: Total rate table
+            type: Type
+            weight_based_table: Weight based table
+            weight_limit: Weight limit
+            weight_rate_table: Weight rate table
+        translations: Translations
+        shipping_type:
+            code: Code
+            label: Label
+            description: Description
+    menu:
+        map_providers: Map providers
+        address_providers: Address providers
+        calculators: Fees calculators
+        shipping: Shipping
+        shipping_type: Shipping Type
+    ui:
+        advanced_shipping_configuration: Advanced shipping configuration
+        calculator: Calculator
+        change_pickup_point: Change pickup point
+        choose: Choose
+        closed: Closed
+        code: Code
+        created_at: Created at
+        day_0: Sunday
+        day_1: Monday
+        day_2: Tuesday
+        day_3: Wednesday
+        day_4: Thursday
+        day_5: Friday
+        day_6: Saturday
+        day_7: Sunday
+        details: Details
+        edit_map_provider_configuration: Edit map provider configuration
+        edit_shipping_address_provider_configuration: Edit shipping address provider configuration
+        edit_shipping_calculator_configuration: Edit shipping calculator configuration
+        empty_pickup_point: You had to choose a pickup point.
+        from_to: From %from% to %to%
+        id: ID
+        map_provider_configuration: Map provider configuration
+        map_provider_configurations: Map provider configurations
+        name: Name
+        new_map_provider_configuration: New map provider configuration
+        new_shipping_address_provider_configuration: New shipping address provider configuration
+        new_shipping_calculator_configuration: New calculator configuration
+        ok: Ok
+        provider: Provider
+        schedules: Schedule
+        search_a_pickup_point: Search a pickup point
+        shipping_address_provider_configuration: Shipping address provider configuration
+        shipping_address_provider_configurations: Shipping address provider configurations
+        shipping_calculator_configuration: Calculator configuration
+        shipping_calculator_configurations: Calculator configurations
+        your_pickup_point: Your pickup point
+        shipping_type: Shipping Type
+        shipping_types: Shipping Types
+        new_shipping_type: New shipping type
+        edit_shipping_type: Edit a shipping type
+        search_button: 'Search'
+        no_result: 'You request has no result'
+        technical_error: 'A technical error append. Please contact our customer service'
+        search_postcode_or_city: 'Please provide a postcode or a city'
+        km: 'Km'
+        less_than_one_km: 'Less than 1 km'
+    mondial_relay:
+        actions:
+            sma: 'Point Relais® XL + L + S + Lockers'
+            apm: 'Lockers only'
+            rel: 'Points Relais which offer Point Relais® collection'
+            med: 'Points Relais which offer delivery in Point Relais® L'
+            24r: 'Point Relais® XL + L + Lockers'
+            24l: 'Relay Points that offer Point Relais® XL delivery'
+            xoh: 'Relay Points compatible with D+1 delivery'
+    colis_prive:
+        search_placeholder: Please provide a postcode

@@ -1,0 +1,5 @@
+{% for name, calculator in calculators %}
+    <a href="{{ path('monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_create', { 'calculator': name }) }}" id="{{ name }}" class="item">
+        {{ calculator|trans }}
+    </a>
+{% endfor %}

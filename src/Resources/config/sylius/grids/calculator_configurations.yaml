@@ -1,0 +1,43 @@
+sylius_grid:
+    templates:
+        action:
+            create_shipping_calculator_configuration: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/Grid/Action/create.html.twig"
+    grids:
+        monsieurbiz_advanced_shipping_admin_shipping_calculator_configurations:
+            driver:
+                options:
+                    class: '%monsieurbiz_advanced_shipping.model.shipping_calculator_configuration.class%'
+            sorting:
+                id: desc
+            fields:
+                id:
+                    label: monsieurbiz_advanced_shipping.ui.id
+                    type: string
+                    sortable: ~
+                calculator:
+                    label: monsieurbiz_advanced_shipping.ui.calculator
+                    type: string
+                    sortable: false
+                code:
+                    label: monsieurbiz_advanced_shipping.ui.code
+                    type: string
+                    sortable: false
+                name:
+                    label: monsieurbiz_advanced_shipping.ui.name
+                    type: string
+                    sortable: false
+                createdAt:
+                    label: monsieurbiz_advanced_shipping.ui.created_at
+                    type: formated_date
+                    sortable: true
+                    options:
+                        timeFormat: short
+            actions:
+                main:
+                    create:
+                        type: create_shipping_calculator_configuration
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

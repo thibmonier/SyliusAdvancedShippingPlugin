@@ -1,0 +1,224 @@
+parameters:
+    monsieurbiz_advanced_shipping.form.type.shipping_calculator_configuration.validation_groups: ['monsieurbiz_advanced_shipping', 'sylius']
+    monsieurbiz_advanced_shipping.form.type.shipping_calculator_configuration_translation.validation_groups: ['monsieurbiz_advanced_shipping']
+    monsieurbiz_advanced_shipping.form.type.shipping_address_provider_configuration.validation_groups: ['monsieurbiz_advanced_shipping']
+    monsieurbiz_advanced_shipping.form.type.shipping_address_provider_configuration_translation.validation_groups: ['monsieurbiz_advanced_shipping']
+    monsieurbiz_advanced_shipping.form.type.map_provider_configuration.validation_groups: ['monsieurbiz_advanced_shipping']
+    monsieurbiz_advanced_shipping.form.type.map_provider_configuration_translation.validation_groups: [ 'monsieurbiz_advanced_shipping' ]
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            Sylius\Component\Registry\ServiceRegistryInterface $shippingAddressProviderRegistry: '@monsieurbiz.advanced_shipping.registry.shipping_address_provider'
+            Sylius\Component\Registry\ServiceRegistryInterface $mapProviderRegistry: '@monsieurbiz.advanced_shipping.registry.map_provider'
+            Sylius\Component\Registry\ServiceRegistryInterface $addressAutocompleteProviderRegistry: '@monsieurbiz.advanced_shipping.registry.address_autocomplete_provider'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\:
+        resource: '../../*'
+        
+    monsieurbiz.advanced_shipping.form_registry.shipping_address_provider:
+        class: Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry
+        
+    monsieurbiz.advanced_shipping.form_registry.map_provider:
+        class: Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry
+
+    monsieurbiz.advanced_shipping.form_registry.address_autocomplete_provider:
+        class: Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry
+            
+    monsieurbiz.advanced_shipping.registry.shipping_address_provider:
+        class: Sylius\Component\Registry\ServiceRegistry
+        arguments:
+            - 'MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\ShippingAddressProviderInterface'
+            - 'shipping address provider'
+            
+    monsieurbiz.advanced_shipping.registry.map_provider:
+        class: Sylius\Component\Registry\ServiceRegistry
+        arguments:
+            - 'MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\MapProvider\MapProviderInterface'
+            - 'map provider'
+            
+    monsieurbiz.advanced_shipping.registry.address_autocomplete_provider:
+        class: Sylius\Component\Registry\ServiceRegistry
+        arguments:
+            - 'MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\AddressAutocompleteProvider\AddressAutocompleteProviderInterface'
+            - 'address autocomplete provider'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\ChainedCalculator:
+        arguments: 
+            - '@sylius.registry.shipping_calculator'
+            - '@monsieurbiz_advanced_shipping.repository.shipping_calculator_configuration'
+        tags:
+            -   name: sylius.shipping_calculator
+                calculator: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\ChainedCalculator::TYPE
+                label: 'monsieurbiz_advanced_shipping.calculator.chained'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Calculator\ChainedCalculatorConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\PostcodeCalculator:
+        tags:
+            -   name: sylius.shipping_calculator
+                calculator: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\PostcodeCalculator::TYPE
+                label: 'monsieurbiz_advanced_shipping.calculator.postcode'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Calculator\PostcodeCalculatorConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\CountryCalculator:
+        tags:
+            -   name: sylius.shipping_calculator
+                calculator: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\CountryCalculator::TYPE
+                label: 'monsieurbiz_advanced_shipping.calculator.country'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Calculator\CountryCalculatorConfigurationType
+                
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\TotalBasedTableRateCalculator:
+        tags:
+            -   name: sylius.shipping_calculator
+                calculator: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\TotalBasedTableRateCalculator::TYPE
+                label: 'monsieurbiz_advanced_shipping.calculator.total_based_table_rate'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Calculator\TotalBasedTableRateCalculatorConfigurationType
+                
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\WeightBasedTableRateCalculator:
+        tags:
+            -   name: sylius.shipping_calculator
+                calculator: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Calculator\WeightBasedTableRateCalculator::TYPE
+                label: 'monsieurbiz_advanced_shipping.calculator.weight_based_table_rate'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Calculator\WeightBasedTableRateCalculatorConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Checker\Rule\CustomerGroupRuleChecker:
+        tags:
+            - name: sylius.shipping_method_rule_checker
+              type: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Checker\Rule\CustomerGroupRuleChecker::TYPE
+              label: 'monsieurbiz_advanced_shipping.shipping_method_rule.customer_group_restriction'
+              form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Rule\CustomerGroupRuleConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Checker\Rule\ShippingPostcodeRuleChecker:
+        tags:
+            - name: sylius.shipping_method_rule_checker
+              type: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Checker\Rule\ShippingPostcodeRuleChecker::TYPE
+              label: 'monsieurbiz_advanced_shipping.shipping_method_rule.shipping_address_postcode_restriction'
+              form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Rule\ShippingPostcodeRuleConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingAddressProviderController:
+        arguments: ['%monsieurbiz.advanced_shipping.shipping_address_providers%']
+        
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\MapProviderController:
+        arguments: ['%monsieurbiz.advanced_shipping.map_providers%']
+        
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingCalculatorController:
+        arguments: ['%sylius.shipping_calculators%']
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Decorator\CustomerOrderAddressesSaverDecorator:
+        decorates: 'sylius.customer_order_addresses_saver'
+        arguments: ['@.inner']
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Factory\AddressProviderConfigurationFactory:
+        decorates: 'monsieurbiz_advanced_shipping.factory.shipping_address_provider_configuration'
+        arguments: ['@.inner']
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Factory\MapProviderConfigurationFactory:
+        decorates: 'monsieurbiz_advanced_shipping.factory.map_provider_configuration'
+        arguments: ['@.inner']
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Factory\CalculatorConfigurationFactory:
+        decorates: 'monsieurbiz_advanced_shipping.factory.shipping_calculator_configuration'
+        arguments: ['@.inner']
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProviderConfigurationType:
+        arguments: 
+            - '%monsieurbiz.advanced_shipping.shipping_address_providers%'
+            - '@monsieurbiz.advanced_shipping.form_registry.shipping_address_provider'
+            - '%monsieurbiz_advanced_shipping.model.shipping_address_provider_configuration.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.shipping_address_provider_configuration.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\MapProviderConfigurationType:
+        arguments: 
+            - '%monsieurbiz.advanced_shipping.map_providers%'
+            - '@monsieurbiz.advanced_shipping.form_registry.map_provider'
+            - '%monsieurbiz_advanced_shipping.model.map_provider_configuration.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.map_provider_configuration.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProviderConfigurationTranslationType:
+        arguments:
+            - '%monsieurbiz_advanced_shipping.model.shipping_address_provider_configuration_translation.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.shipping_address_provider_configuration_translation.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\MapProviderConfigurationTranslationType:
+        arguments:
+            - '%monsieurbiz_advanced_shipping.model.map_provider_configuration_translation.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.map_provider_configuration_translation.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\CalculatorConfigurationType:
+        arguments: 
+            - '%sylius.shipping_calculators%'
+            - '@sylius.form_registry.shipping_calculator'
+            - '%monsieurbiz_advanced_shipping.model.shipping_calculator_configuration.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.shipping_calculator_configuration.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\CalculatorConfigurationTranslationType:
+        arguments:
+            - '%monsieurbiz_advanced_shipping.model.shipping_calculator_configuration_translation.class%'
+            - '%monsieurbiz_advanced_shipping.form.type.shipping_calculator_configuration_translation.validation_groups%'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Menu\AdminMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItem }
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Processor\AdvancedShippingProcessor:
+        public: true
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\DpdPickupShippingAddressProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.shipping_address_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\DpdPickupShippingAddressProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.shipping_address_provider.dpd_pickup'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider\DpdPickupAddressProviderConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\ChronopostPickupShippingAddressProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.shipping_address_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\ChronopostPickupShippingAddressProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.shipping_address_provider.chronopost_pickup'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider\ChronopostPickupAddressProviderConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\FixedShippingAddressProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.shipping_address_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\FixedShippingAddressProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.shipping_address_provider.fixed'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider\FixedAddressProviderConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\MondialRelayShippingAddressProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.shipping_address_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\MondialRelayShippingAddressProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.shipping_address_provider.mondial_relay'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider\MondialRelayAddressProviderConfigurationType
+                
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\ColisPrivePickupShippingAddressProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.shipping_address_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\ShippingAddressProvider\ColisPrivePickupShippingAddressProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.shipping_address_provider.colis_prive_pickup'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider\ColisPrivePickupAddressProviderConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\MapProvider\MapboxMapProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.map_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\MapProvider\MapboxMapProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.map_provider.mapbox'
+                form_type: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\MapProvider\MapboxMapProviderConfigurationType
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\AddressAutocompleteProvider\OpenStreetMapAutocompleteProvider:
+        tags:
+            -   name: monsieurbiz.advanced_shipping.address_autocomplete_provider
+                code: !php/const MonsieurBiz\SyliusAdvancedShippingPlugin\Provider\AddressAutocompleteProvider\OpenStreetMapAutocompleteProvider::TYPE
+                label: 'monsieurbiz_advanced_shipping.address_autocomplete_provider.open_street_map'
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\EventListener\CalculatorDeleteEventListener:
+        tags:
+            - { name: kernel.event_listener, event: monsieurbiz_advanced_shipping.shipping_calculator_configuration.pre_delete }
+
+    MonsieurBiz\SyliusAdvancedShippingPlugin\EventListener\AddressProviderDeleteEventListener:
+        tags:
+            - { name: kernel.event_listener, event: monsieurbiz_advanced_shipping.shipping_address_provider_configuration.pre_delete }
+

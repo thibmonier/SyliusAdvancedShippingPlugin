@@ -1,0 +1,5 @@
+imports:
+    - { resource: 'grids/calculator_configurations.yaml' }
+    - { resource: 'grids/address_provider_configurations.yaml' }
+    - { resource: 'grids/shipping_types.yaml' }
+    - { resource: 'grids/map_provider_configurations.yaml' }

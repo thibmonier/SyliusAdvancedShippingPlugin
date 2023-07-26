@@ -1,0 +1,12 @@
+{% macro filterByType(form, type, groups, order) %}
+    {% set methods = form.method %}
+    {% for key, choice_form in methods %}
+        {% if groups[type] is defined and choice_form.vars.value in groups[type].methods %}
+            {% set fee = form.method.vars.shipping_costs[choice_form.vars.value] %}
+            {% set method = form.method.vars.choices[key].data %}
+            {% include '@SyliusShop/Checkout/SelectShipping/_choice.html.twig' with {'form': choice_form, 'method': method, 'fee': fee, 'order': order} %}
+        {% endif %}
+    {% else %}
+        {% include '@SyliusShop/Checkout/SelectShipping/_unavailable.html.twig' %}
+    {% endfor %}
+{% endmacro %}

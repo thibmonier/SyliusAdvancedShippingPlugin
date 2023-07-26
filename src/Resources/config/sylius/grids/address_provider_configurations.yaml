@@ -1,0 +1,43 @@
+sylius_grid:
+    templates:
+        action:
+            create_shipping_address_provider_configuration: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/Grid/Action/create.html.twig"
+    grids:
+        monsieurbiz_advanced_shipping_admin_shipping_address_provider_configurations:
+            driver:
+                options:
+                    class: '%monsieurbiz_advanced_shipping.model.shipping_address_provider_configuration.class%'
+            sorting:
+                id: desc
+            fields:
+                id:
+                    label: monsieurbiz_advanced_shipping.ui.id
+                    type: string
+                    sortable: ~
+                provider:
+                    label: monsieurbiz_advanced_shipping.ui.provider
+                    type: string
+                    sortable: false
+                code:
+                    label: monsieurbiz_advanced_shipping.ui.code
+                    type: string
+                    sortable: false
+                name:
+                    label: monsieurbiz_advanced_shipping.ui.name
+                    type: string
+                    sortable: false
+                createdAt:
+                    label: monsieurbiz_advanced_shipping.ui.created_at
+                    type: formated_date
+                    sortable: true
+                    options:
+                        timeFormat: short
+            actions:
+                main:
+                    create:
+                        type: create_shipping_address_provider_configuration
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

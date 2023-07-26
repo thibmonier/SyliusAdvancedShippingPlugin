@@ -1,0 +1,40 @@
+{% extends '@SyliusUi/Form/theme.html.twig' %}
+
+{% block monsieurbiz_advance_shipping_address_search_autocomplete_row -%}
+    {# Check if specific placeholder exists for identifier #}
+    {% set placeholder = ('monsieurbiz_advanced_shipping.' ~ identifier ~ '.search_placeholder') | trans %}
+    {% if placeholder == 'monsieurbiz_advanced_shipping.' ~ identifier ~ '.search_placeholder' %}
+        {% set placeholder = 'monsieurbiz_advanced_shipping.ui.search_postcode_or_city' | trans %}
+    {% endif %}
+    <div
+        data-component="address-search-autocomplete"
+        data-service-url="{{ url('monsieurbiz_advanced_shipping_shop_search_address', { provider }) }}"
+        data-limit="{{ limit }}"
+        data-identifier="{{ identifier }}"
+        data-has-replace="{{ replace_value ? 'true' : 'false' }}"
+        data-has-sugestions="{{ display_sugestions ? 'true' : 'false' }}"
+        data-has-no-result-error-message="{{ has_no_result_error_message ? 'true' : 'false' }}"
+        data-no-result-error-message="{{ no_result_error_message|trans }}"
+        data-technical-error-message="{{ 'monsieurbiz_advanced_shipping.ui.technical_error'|trans }}"
+        class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        <div class="ui category fluid search" data-target="loading">
+            <div class="{{ use_button ? 'action' : 'icon' }} input">
+                {{- form_widget(form.search, {attr: {'data-target': 'search', 'placeholder': placeholder }}) -}}
+                {{- form_widget(form.location, {attr: {'data-target': 'location'}}) -}}
+                {{- form_widget(form.country, {attr: {'data-target': 'country'}}) -}}
+                {% if use_button %}
+                    <button data-target="button">{% include '/Components/Icons/index.html.twig' with { icon:'search', width:'16', height:'15' } %}<span class="is-hidden">{{ 'app.ui.search'|trans }}</span></button>
+                {% else %}
+                    <i class="search icon"></i>
+                {% endif %}
+            </div>
+            <div class="results" data-target="results"></div>
+        </div>
+        <div class="ui negative message hidden" data-target="error-container">
+            <p data-target="error-message"></p>
+        </div>
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock monsieurbiz_advance_shipping_address_search_autocomplete_row %}

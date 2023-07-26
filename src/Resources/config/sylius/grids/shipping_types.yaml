@@ -1,0 +1,30 @@
+sylius_grid:
+    grids:
+        monsieurbiz_advanced_shipping_admin_shipping_shipping_types:
+            driver:
+                options:
+                    class: '%monsieurbiz_advanced_shipping.model.shipping_type.class%'
+            sorting:
+                id: desc
+            fields:
+                id:
+                    label: monsieurbiz_advanced_shipping.ui.id
+                    type: string
+                    sortable: ~
+                code:
+                    label: monsieurbiz_advanced_shipping.form.shipping_type.code
+                    type: string
+                    sortable: false
+                label:
+                    label: monsieurbiz_advanced_shipping.form.shipping_type.label
+                    type: string
+                    sortable: false
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

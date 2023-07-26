@@ -1,0 +1,5 @@
+monsieurbiz_advanced_shipping:
+    calculator:
+        delete_used: 'This calculator is used and cannot be deleted.'
+    address_provider:
+        delete_used: 'This address provider is used and cannot be deleted.'

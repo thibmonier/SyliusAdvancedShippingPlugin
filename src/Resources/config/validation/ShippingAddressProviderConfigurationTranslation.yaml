@@ -1,0 +1,9 @@
+MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingAddressProviderConfigurationTranslation:
+    properties:
+        name:
+            -   NotBlank:
+                    groups: [monsieurbiz_advanced_shipping]
+            -   Length:
+                    min: 2
+                    max: 255
+                    groups: [monsieurbiz_advanced_shipping]

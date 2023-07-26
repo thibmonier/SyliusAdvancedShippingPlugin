@@ -1,0 +1,56 @@
+{% for pickupPoint in pickupPointList %}
+    <div class="pickup-item">
+        <div
+            class="item"
+            data-target="pickup-point"
+            data-value="{{ pickupPoint|json_encode }}"
+        >
+            <div data-target="pickup-point-information" class="hidden">
+                {% include '@MonsieurBizSyliusAdvancedShippingPlugin/Shop/Checkout/SelectShipping/Shipment/AddressProvider/PickupPointAddressProvider/_pickupPoint.html.twig' with { pickupPoint } %}
+            </div>
+            <div class="pickup-item-content">
+                <div class="content">
+                    <div class="header text-medium black-color">{{ pickupPoint.name }}</div>
+                    <div class="description">
+                        {{ pickupPoint.address1 }}<br/>
+                        {% if pickupPoint.address2 is not empty %}{{ pickupPoint.address2 }}<br/>{% endif %}
+                        {% if pickupPoint.address3 is not empty %}{{ pickupPoint.address3 }}<br/>{% endif %}
+                        {{ pickupPoint.postcode }} {{ pickupPoint.city }}
+                    </div>
+                </div>
+                <div class="action is-flex">
+                    <button data-action="display-schedule" data-schedule-target="schedule-zone-{{ pickupPoint.identifier }}" type="button" class="button small-size secondary">
+                        {{ 'monsieurbiz_advanced_shipping.ui.schedules'|trans }}
+                    </button>
+                    <button data-action="choice-pickup-point" type="button" class="button small-size primary">
+                        {{ 'monsieurbiz_advanced_shipping.ui.choose'|trans }}
+                    </button>
+                </div>
+                <div data-target="schedule-zone-{{ pickupPoint.identifier }}" class="hidden information">
+                    {% for openingDay in pickupPoint.openingDays %}
+                        <div class="information-item">
+                            <div class="information-content">
+                                <div class="information-header text-medium-small very-dark-gray-color">{{ ('monsieurbiz_advanced_shipping.ui.day_' ~ openingDay.dayCode)|trans }}</div>
+                                <div class="information-description text-medium-small very-dark-gray-color">
+                                    {% for timeSlot in openingDay.timeSlots %}
+                                        {{ timeSlot.startTime }} {{ timeSlot.endTime }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% if pickupPoint.holidayItems is not empty %}
+                        <div class="information-item">
+                            {% for holiday in pickupPoint.holidayItems %}
+                                <div class="text-medium-small very-dark-gray-color is-bold">{{ 'monsieurbiz_advanced_shipping.ui.closed'|trans }}</div>
+                                <div class="text-medium-small very-dark-gray-color">
+                                    {{ 'monsieurbiz_advanced_shipping.ui.from_to'|trans({'%from%': holiday.startTime|date('d/m/Y'), '%to%': holiday.endTime|date('d/m/Y')}) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif  %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

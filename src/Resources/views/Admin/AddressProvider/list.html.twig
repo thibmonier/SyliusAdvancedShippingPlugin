@@ -1,0 +1,5 @@
+{% for name, provider in providers %}
+    <a href="{{ path('monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration_create', { 'provider': name }) }}" id="{{ name }}" class="item">
+        {{ provider|trans }}
+    </a>
+{% endfor %}

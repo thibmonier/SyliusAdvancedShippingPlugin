@@ -1,0 +1,17 @@
+MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingType:
+    constraints:
+        -   Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                fields: [ code ]
+                errorPath: code
+                groups: [ monsieurbiz_advanced_shipping ]
+    properties:
+        code:
+            -   NotBlank:
+                    groups: [ monsieurbiz_advanced_shipping ]
+            -   Length:
+                    min: 2
+                    max: 255
+                    groups: [ monsieurbiz_advanced_shipping ]
+        translations:
+            -   Valid:
+                    groups: [ monsieurbiz_advanced_shipping ]

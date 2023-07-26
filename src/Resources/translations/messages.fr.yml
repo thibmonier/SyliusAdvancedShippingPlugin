@@ -1,0 +1,183 @@
+monsieurbiz_advanced_shipping:
+    calculator:
+        chained: Multiples calculateurs
+        country: Tarif basé sur le pays
+        postcode: Tarif basé sur le code postal
+        total_based_table_rate: Tableau de tarifs basés sur le total
+        weight_based_table_rate: Tableau de tarifs basés sur le poids
+    shipping_address_provider:
+        chronopost_pickup: Chronopost Pickup
+        dpd_pickup: DPD Pickup
+        fixed: 'Fournisseur d''adresse fixe'
+        mondial_relay: Mondial Relay
+        colis_prive_pickup: Colis privé Pickup
+    shipping_method_rule:
+        customer_group_restriction: Restriction par groupe client
+        shipping_address_postcode_restriction: Restriction par code postal
+    map_provider:
+        mapbox: Mapbox
+    form:
+        calculator: Calculateur
+        chained_calculator_configuration:
+            add_calculator: Ajouter un calculateur
+            calculators: Calculateurs
+        chronopost_pickup_shiping_address_provider:
+            api_account_number: 'Numéro de compte d''API Chronopost Relais'
+            api_password: 'Mot de passe d''API Chronopost Relais'
+            api_url: 'URL d''API Chronopost Relais'
+        code: Code
+        choice_type:
+            excluded: Inclus
+            included: Exclus
+        country_calculator_configuration:
+            comparison_type: Type de comparaison
+            country_code: Pays
+            default_rate: Tarif par défaut
+            excluded: Exclusion
+            included: Inclusion
+            rate: Tarif
+            rules: Règles
+            rules_help: |
+                Utilisez les règles pour fixer un tarif de livraison en fonction du pays de l'adresse de livraison. Si 
+                vous utilisez le mode inclusion, si le pays de l'adresse correspond à un pays de la règle, le tarif de 
+                la règle est appliqué. Si vous utilisez le mode exclusion, dans le cas où le pays de l'adresse ne 
+                correspond aucun pays de la règle, la règle est appliquée. Notez que seul le tarif de la 1ère règle 
+                valide rencontrée est appliqué. 
+        customer_group_restriction:
+            customer_group: Groupe client
+        dpd_pickup_shiping_address_provider:
+            api_key: 'Clef d''API DPD Relais'
+            api_url: 'URL d''API DPD Relais'
+        fixed_shipping_address_provider:
+            address_informations: 'Informations d''adresse'
+            city: Ville
+            code: Code
+            company: Société
+            country: Pays
+            first_name: Prénom
+            general_informations: Informations générales
+            instructions: Instructions
+            last_name: Nom
+            phone_number: Téléphone
+            postcode: Code postal
+            street: Voie
+            Title: Titre
+        map_provider: Fournisseur de carte
+        mapbox_map_provider:
+            access_token: 'Jeton d''accès'
+            attribution: Attribution
+        mondial_relay_shiping_address_provider:
+            action: 'Typologie de point relais'
+            identifier: 'Enseigne d''API'
+            country: 'Pays de l''API'
+            default_delay: 'Delais d''expédition par défaut'
+            key: 'Mot de passe d''API'
+            result_limit: 'Nombre de résultats'
+            search_area: 'Zone de recherche (en km)'
+            url: 'Url de l''API'
+        colis_prive_pickup_shipping_address_provider: 
+            url: 'Url de l''API'
+            account_id: Numéro de compte
+            default_delay: 'Délais d''expédition par défaut'
+            result_limit: 'Nombre de résultats'
+            country_code: 'Code pays de l''API'
+        name: Nom
+        postcode_calculator_configuration:
+            comparison_type: Type de comparaison
+            country: Pays
+            default_rate: Tarif par défaut
+            excluded: Exclusion
+            included: Inclusion
+            rate: Tarif
+            rule: Règle
+            rules: Règles
+            rules_help: |
+                Utilisez les règles pour fixer un tarif de livraison en fonction du code postal de l'adresse 
+                de livraison. Chaque règle est constituée de masques, séparés par des virgules. Vous pouvez spécifier 
+                des codes postaux précis (80120,59160,60500) ou utiliser le caractère générique * (75* pour tout Paris ou 
+                2A*,2B*,20* pour la Corse). Si vous utilisez le mode inclusion, si un code postal correspond à un  masque, 
+                le tarif de la règle est appliqué. Si vous utilisez le mode exclusion, dans le cas où le code postal ne correspond à 
+                aucun masque, la règle est appliquée. Notez que seul le tarif de la 1ère règle valide rencontrée est appliqué. 
+        provider: Fournisseur
+        shipping_address_provider: 'Fournisseur d''adresse d''expédition'
+        table_rate_calculator_configuration:
+            default_rate: Tarif par défaut
+            rate: Tarif
+            rate_table: Tableau des prix
+            total_based_table: Tableau basé sur total
+            total_limit: Limite de total
+            total_rate_table: Tarifs basés sur le total
+            type: Type
+            weight_based_table: Tableau basé sur le poids
+            weight_limit: Limite de poids
+            weight_rate_table: Tarifs basés sur le poids
+        translations: Traductions
+        shipping_type:
+            code: Code
+            label: Label
+            description: Description
+    menu:
+        map_providers: 'Fournisseurs de cartes'
+        address_providers: 'Fournisseurs d''adresses'
+        calculators: Calculateurs de frais
+        shipping: Expédition
+        shipping_type: 'Type d''expédition'
+    ui:
+        advanced_shipping_configuration: 'Configuration des méthodes d''expédition avancées'
+        calculator: Calculateur
+        change_pickup_point: Changer de point relais
+        choose: Choisir
+        closed: Fermeture
+        code: Code
+        created_at: Créée le
+        day_0: Dimanche
+        day_1: Lundi
+        day_2: Mardi
+        day_3: Mercredi
+        day_4: Jeudi
+        day_5: Vendredi
+        day_6: Samedi
+        day_7: Dimanche
+        details: Détails
+        edit_map_provider_configuration: Edition de la configuration du fournisseur de carte
+        edit_shipping_address_provider_configuration: 'Edition de la configuration du fournisseur d''adresse'
+        edit_shipping_calculator_configuration: Edition de la configuration du calculateur
+        empty_pickup_point: Vous devez choisir un point relais.
+        from_to: Du %from% au %to%
+        id: ID
+        map_provider_configuration: Configuration du fournisseur de carte
+        map_provider_configurations: Configurations des fournisseurs de cartes
+        name: Nom
+        new_map_provider_configuration: Nouvelle configuration de fournisseur de carte
+        new_shipping_address_provider_configuration: 'Nouvelle configuration de fournisseur d''adresse'
+        new_shipping_calculator_configuration: Nouvelle configuration de calculateur
+        ok: Ok
+        provider: Fournisseur
+        schedules: Horaires
+        search_a_pickup_point: Chercher un point relais
+        shipping_address_provider_configuration: 'Configuration du fournisseur d''adresse'
+        shipping_address_provider_configurations: 'Configurations des fournisseurs d''adresses'
+        shipping_calculator_configuration: Configurations du calculateur
+        shipping_calculator_configurations: Configurations des calculateurs
+        your_pickup_point: Votre point relais
+        shipping_type: 'Type d''expédition'
+        shipping_types: 'Types d''expédition'
+        new_shipping_type: 'Nouveau type d''expédition'
+        edit_shipping_type: 'Éditer un type d''expédition'
+        search_button: 'Chercher'
+        no_result: 'Votre recherche n''a pas de résultat'
+        technical_error: 'Une erreur technique est survenue. Veuillez contacter notre service client.'
+        search_postcode_or_city: 'Saisissez un code postal ou une ville'
+        km: 'Km'
+        less_than_one_km: 'Moins d''un kilomètre'
+    mondial_relay:
+        actions:
+            sma: 'Point Relais® XL + L + S + Lockers'
+            apm: 'Lockers uniquement'
+            rel: 'Points Relais qui proposent la collecte en Point Relais®'
+            med: 'Points Relais qui proposent la livraison en Point Relais® L'
+            24r: 'Point Relais® XL + L + Lockers'
+            24l: 'Points Relais qui proposent la livraison en Point Relais® XL '
+            xoh: 'Points Relais compatibles avec la livraison D+1 ' 
+    colis_prive:
+        search_placeholder: Saisissez un code postal

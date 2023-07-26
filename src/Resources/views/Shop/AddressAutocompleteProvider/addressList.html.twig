@@ -1,0 +1,3 @@
+{% for result in results %}
+    <a class="result" data-target="result" data-location="{{ result|json_encode }}">{{ result.name }}</a>
+{% endfor %}

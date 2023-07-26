@@ -1,0 +1,9 @@
+{% if form.vars.address_provider_template is defined and form.vars.address_provider_template is not null %}
+    {%
+        include form.vars.address_provider_template with {
+            provider: form.vars.address_provider,
+            shipment: form.vars.shipment,
+            method: form.vars.method
+        }
+    %}
+{% endif %}

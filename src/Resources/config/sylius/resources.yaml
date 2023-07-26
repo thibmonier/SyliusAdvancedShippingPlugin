@@ -1,0 +1,35 @@
+sylius_resource:
+    resources:
+        monsieurbiz_advanced_shipping.shipping_calculator_configuration:
+            classes:
+                model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingCalculatorConfiguration
+                form: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\CalculatorConfigurationType
+            translation:
+                classes:
+                    model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingCalculatorConfigurationTranslation
+        monsieurbiz_advanced_shipping.shipping_address_provider_configuration:
+            classes:
+                model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingAddressProviderConfiguration
+                form: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProviderConfigurationType
+            translation:
+                classes:
+                    model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingAddressProviderConfigurationTranslation
+        monsieurbiz_advanced_shipping.shipping_type:
+            classes:
+                model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingType
+                interface: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingTypeInterface
+                form: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Shipping\ShippingType
+            translation:
+                classes:
+                    model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingTypeTranslation
+                    interface: \MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingTypeTranslationInterface
+                    form: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\Shipping\ShippingTypeTranslation
+        monsieurbiz_advanced_shipping.map_provider_configuration:
+            classes:
+                model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\MapProviderConfiguration
+                interface: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\MapProviderConfigurationInterface
+                form: MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\MapProviderConfigurationType
+            translation:
+                classes:
+                    model: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\MapProviderConfigurationTranslation
+                    interface: MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\MapProviderConfigurationTranslationInterface
