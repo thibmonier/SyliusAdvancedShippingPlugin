@@ -28,10 +28,10 @@ sylius_grid:
                     sortable: false
                 createdAt:
                     label: monsieurbiz_advanced_shipping.ui.created_at
-                    type: formated_date
+                    type: datetime
                     sortable: true
                     options:
-                        timeFormat: short
+                        format: d/m/Y H:i:s
             actions:
                 main:
                     create:
