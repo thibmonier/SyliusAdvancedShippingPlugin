@@ -38,7 +38,6 @@ final class MonsieurBizSyliusAdvancedShippingExtension extends Extension impleme
         return str_replace('monsieur_biz', 'monsieurbiz', parent::getAlias());
     }
 
-
     /**
      * @inheritdoc
      */
