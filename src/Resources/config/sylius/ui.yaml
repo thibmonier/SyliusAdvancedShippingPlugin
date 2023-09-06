@@ -16,14 +16,14 @@ sylius_ui:
             blocks:
                 monsieurbiz_advanced_shipping_form:
                     template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/_advancedShippingForm.html.twig'
+        sylius.admin.shipping_method.create.form:
+            blocks:
+                monsieurbiz_advanced_shipping_form:
+                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/_advancedShippingForm.html.twig'
         monsieurbiz.advanced_shipping.admin.shipping_method.form:
             blocks:
                 monsieurbiz_advanced_shipping_address_provider_form:
                     template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/AddressProvider/_form.html.twig'
-                monsieurbiz_advanced_shipping_shipping_type_form:
-                    template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/ShippingType/_form.html.twig'
-        sylius.admin.shipping_method.create.form:
-            blocks:
                 monsieurbiz_advanced_shipping_shipping_type_form:
                     template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/ShippingMethod/ShippingType/_form.html.twig'
         monsieurbiz.advanced_shipping.front.shipping_method:
