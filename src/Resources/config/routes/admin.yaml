@@ -18,7 +18,7 @@ monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_create:
     path: /calculator-configurations/new/{calculator}
     methods: [GET, POST]
     defaults:
-        _controller: monsieurbiz_advanced_shipping.controller.shipping_calculator_configuration:createAction
+        _controller: monsieurbiz_advanced_shipping.controller.shipping_calculator_configuration::createAction
         _sylius:
             section: admin
             factory:
@@ -62,7 +62,7 @@ monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration_crea
     path: /address-provider-configurations/new/{provider}
     methods: [GET, POST]
     defaults:
-        _controller: monsieurbiz_advanced_shipping.controller.shipping_address_provider_configuration:createAction
+        _controller: monsieurbiz_advanced_shipping.controller.shipping_address_provider_configuration::createAction
         _sylius:
             section: admin
             factory:
@@ -121,7 +121,7 @@ monsieurbiz_advanced_shipping_admin_map_provider_configuration_create:
     path: /map_provider-configurations/new/{provider}
     methods: [GET, POST]
     defaults:
-        _controller: monsieurbiz_advanced_shipping.controller.map_provider_configuration:createAction
+        _controller: monsieurbiz_advanced_shipping.controller.map_provider_configuration::createAction
         _sylius:
             section: admin
             factory:
