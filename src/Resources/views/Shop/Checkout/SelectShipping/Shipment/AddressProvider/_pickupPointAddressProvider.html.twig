@@ -15,8 +15,8 @@
     data-map-url="{{ mapProvider.url }}"
     data-map-parameters="{{ mapProvider.parameters|json_encode }}"
     data-service-url="{{ url('monsieurbiz_advanced_shipping_shop_pickup_point_list', {methodId: method.id}) }}"
-    data-active-marker-icon="{{ asset('/bundles/MonsieurBizSyliusAdvancedShippingPlugin/images/marker-red.png') }}"
-    data-unactive-marker-icon="{{ asset('/bundles/MonsieurBizSyliusAdvancedShippingPlugin/images/marker-yellow.png') }}"
+    data-active-marker-icon="{{ asset('/bundles/monsieurbizsyliusadvancedshippingplugin/images/marker-red.png') }}"
+    data-unactive-marker-icon="{{ asset('/bundles/monsieurbizsyliusadvancedshippingplugin/images/marker-yellow.png') }}"
 >
     {{ form_widget(form.addressProvider.pickupPoint) }}
     {% if form.addressProvider.pickupPoint.vars.errors|length %}
