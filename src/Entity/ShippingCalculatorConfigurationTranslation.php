@@ -13,29 +13,13 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusAdvancedShippingPlugin\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
-/**
- * @ORM\Entity
- *
- * @ORM\Table(name="monsieurbiz_shipping_calculator_config_translation")
- */
 class ShippingCalculatorConfigurationTranslation extends AbstractTranslation implements ShippingCalculatorConfigurationTranslationInterface
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    protected int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $name;
+    protected string $name;
 
     public function getId(): int
     {

@@ -13,66 +13,33 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusAdvancedShippingPlugin\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
 /**
- * @ORM\Entity
- *
- * @ORM\Table(
- *     name="monsieurbiz_shipping_map_provider_config",
- *     uniqueConstraints={@ORM\UniqueConstraint(columns={"provider", "code"})}
- * )
- *
  * @method MapProviderConfigurationTranslationInterface getTranslation(?string $locale = null)
  */
 class MapProviderConfiguration implements MapProviderConfigurationInterface
 {
     use TimestampableTrait;
     use TranslatableTrait {
-        __construct as protected initializeTranslationsCollection;
+        TranslatableTrait::__construct as protected initializeTranslationsCollection;
     }
 
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    protected int $id;
+
+    protected string $provider;
+
+    protected string $code;
+
+    protected array $configuration = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $provider;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $code;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private array $configuration = [];
-
-    /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
-     * @Gedmo\Timestampable(on="create")
-     *
      * @var \DateTimeInterface|null
      */
     protected $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="datetime")
-     *
-     * @Gedmo\Timestampable(on="update")
-     *
      * @var \DateTimeInterface|null
      */
     protected $updatedAt;
