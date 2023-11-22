@@ -23,15 +23,15 @@ interface ShippingAddressProviderConfigurationInterface extends ResourceInterfac
 
     public function getProvider(): string;
 
-    public function setProvider(string $provider): void;
+    public function setProvider(?string $provider): void;
 
     public function getCode(): string;
 
-    public function setCode(string $code): void;
+    public function setCode(?string $code): void;
 
     public function getName(): string;
 
-    public function setName(string $name): void;
+    public function setName(?string $name): void;
 
     public function getConfiguration(): array;
 

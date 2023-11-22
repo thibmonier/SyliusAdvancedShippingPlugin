@@ -1,7 +1,6 @@
 {
     "name": "monsieurbiz/sylius-advanced-shipping-plugin",
     "type": "sylius-plugin",
-    "version": "v0.1.0",
     "keywords": ["sylius", "sylius-plugin", "monsieurbiz", "shipping"],
     "description": "Advanced configuration for shipping methods.",
     "license": "MIT",

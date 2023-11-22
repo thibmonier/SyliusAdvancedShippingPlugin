@@ -22,54 +22,30 @@ use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
 /**
- * @ORM\Entity
- *
- * @ORM\Table(name="monsieurbiz_shipping_type")
- *
  * @method ShippingTypeTranslationInterface getTranslation(?string $locale = null)
  */
 class ShippingType implements ShippingTypeInterface
 {
     use TimestampableTrait;
     use TranslatableTrait {
-        __construct as private initializeTranslationsCollection;
+        TranslatableTrait::__construct as private initializeTranslationsCollection;
     }
 
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
-    private ?int $id;
+    protected ?int $id;
+
+    protected ?string $code = null;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private ?string $code = null;
-
-    /**
-     * @ORM\OneToMany(targetEntity=ShippingMethodInterface::class, mappedBy="type", cascade={"persist"})
-     *
      * @var Collection<array-key, ShippingMethodInterface>
      */
-    private Collection $methods;
+    protected Collection $methods;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
-     *
-     * @Gedmo\Timestampable(on="create")
-     *
      * @var \DateTimeInterface|null
      */
     protected $createdAt;
 
     /**
-     * @ORM\Column(name="updated_at", type="datetime")
-     *
-     * @Gedmo\Timestampable(on="update")
-     *
      * @var \DateTimeInterface|null
      */
     protected $updatedAt;
@@ -90,7 +66,7 @@ class ShippingType implements ShippingTypeInterface
         return (string) $this->code;
     }
 
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
