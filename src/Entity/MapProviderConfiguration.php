@@ -59,7 +59,7 @@ class MapProviderConfiguration implements MapProviderConfigurationInterface
         return $this->provider;
     }
 
-    public function setProvider(string $provider): void
+    public function setProvider(?string $provider): void
     {
         $this->provider = $provider;
     }
@@ -69,7 +69,7 @@ class MapProviderConfiguration implements MapProviderConfigurationInterface
         return $this->code;
     }
 
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -79,7 +79,7 @@ class MapProviderConfiguration implements MapProviderConfigurationInterface
         return $this->getTranslation()->getName();
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->getTranslation()->setName($name);
     }

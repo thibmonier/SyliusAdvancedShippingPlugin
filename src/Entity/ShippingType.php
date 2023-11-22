@@ -66,7 +66,7 @@ class ShippingType implements ShippingTypeInterface
         return (string) $this->code;
     }
 
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }

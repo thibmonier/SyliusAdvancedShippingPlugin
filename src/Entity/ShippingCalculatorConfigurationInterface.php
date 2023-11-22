@@ -27,7 +27,7 @@ interface ShippingCalculatorConfigurationInterface extends ResourceInterface, Ti
 
     public function getCode(): string;
 
-    public function setCode(string $code): void;
+    public function setCode(?string $code): void;
 
     public function getName(): string;
 
