@@ -19,11 +19,20 @@ use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingType;
 use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingTypeInterface;
 use Sylius\Bundle\ShippingBundle\Form\Type\ShippingMethodType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class ShippingMethodTypeExtension extends AbstractTypeExtension
 {
+    public function __construct(
+        #[Autowire(param: 'monsieurbiz_advanced_shipping.model.shipping_address_provider_configuration.class')]
+        private string $shippingAddressProviderConfigurationClass,
+        #[Autowire(param: 'monsieurbiz_advanced_shipping.model.shipping_type.class')]
+        private string $shippingTypeClass,
+    ) {
+    }
+
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
@@ -32,7 +41,7 @@ final class ShippingMethodTypeExtension extends AbstractTypeExtension
         $builder
             ->add('shippingAddressProviderConfiguration', EntityType::class, [
                 'required' => false,
-                'class' => ShippingAddressProviderConfiguration::class,
+                'class' => $this->shippingAddressProviderConfigurationClass,
                 'choice_label' => function (ShippingAddressProviderConfigurationInterface $configuration): string {
                     return sprintf('%s - %s', $configuration->getCode(), $configuration->getName());
                 },
@@ -42,7 +51,7 @@ final class ShippingMethodTypeExtension extends AbstractTypeExtension
             ->add('type', EntityType::class, [
                 'label' => 'monsieurbiz_advanced_shipping.ui.shipping_type',
                 'required' => true,
-                'class' => ShippingType::class,
+                'class' => $this->shippingTypeClass,
                 'choice_label' => function (ShippingTypeInterface $shippingType): string {
                     return (string) $shippingType->getLabel();
                 },
