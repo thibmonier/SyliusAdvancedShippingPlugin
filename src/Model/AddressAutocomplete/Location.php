@@ -91,10 +91,7 @@ class Location implements LocationInterface, \JsonSerializable
         return $this->longitude;
     }
 
-    /**
-     * @return mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'type' => $this->type,

@@ -183,10 +183,7 @@ class PickupPoint implements PickupPointInterface, \JsonSerializable
         return $this->holidayItems;
     }
 
-    /**
-     * @return mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'identifier' => $this->identifier,
