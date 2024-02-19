@@ -48,10 +48,7 @@ class OpeningDay implements OpeningDayInterface, \JsonSerializable
         $this->timeSlots[] = $timeSlot;
     }
 
-    /**
-     * @return mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'dayCode' => $this->dayCode,

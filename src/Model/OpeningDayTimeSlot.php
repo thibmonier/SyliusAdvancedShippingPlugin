@@ -39,10 +39,7 @@ class OpeningDayTimeSlot implements OpeningDayTimeSlotInterface, \JsonSerializab
         return $this->endTime;
     }
 
-    /**
-     * @return mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'startTime' => $this->startTime,

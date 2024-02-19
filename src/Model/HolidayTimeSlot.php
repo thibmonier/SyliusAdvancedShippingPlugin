@@ -39,10 +39,7 @@ class HolidayTimeSlot implements HolidayTimeSlotInterface, \JsonSerializable
         return $this->endTime;
     }
 
-    /**
-     * @return mixed
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'startTime' => null !== $this->startTime ? $this->startTime->format('Y-m-d') : null,
