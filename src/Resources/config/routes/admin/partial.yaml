@@ -4,6 +4,8 @@ monsieurbiz_advanced_shipping_admin_get_shipping_calculators:
     defaults:
         _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingCalculatorController::getListAction
         template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/list.html.twig'
+        _sylius:
+            permission: true
 
 monsieurbiz_advanced_shipping_admin_get_shipping_address_providers:
     path: /shipping-adress-providers
@@ -11,6 +13,8 @@ monsieurbiz_advanced_shipping_admin_get_shipping_address_providers:
     defaults:
         _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingAddressProviderController::getProviderListAction
         template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/list.html.twig'
+        _sylius:
+            permission: true
 
 monsieurbiz_advanced_shipping_admin_get_map_providers:
     path: /map-providers
@@ -18,3 +22,5 @@ monsieurbiz_advanced_shipping_admin_get_map_providers:
     defaults:
         _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\MapProviderController::getProviderListAction
         template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/MapProvider/list.html.twig'
+        _sylius:
+            permission: true
