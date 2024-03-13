@@ -181,3 +181,10 @@ monsieurbiz_advanced_shipping:
             xoh: 'Relay Points compatible with D+1 delivery'
     colis_prive:
         search_placeholder: Please provide a postcode
+
+sylius_plus:
+    rbac:
+        parent:
+            shipping_address_provider_configurations: 'Shipping address provider configurations'
+            shipping_calculator_configurations: 'Calculator configurations'
+            shipping_types: 'Shipping Types'
