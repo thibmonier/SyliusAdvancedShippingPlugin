@@ -177,8 +177,8 @@ monsieurbiz_advanced_shipping:
             rel: 'Points Relais qui proposent la collecte en Point Relais®'
             med: 'Points Relais qui proposent la livraison en Point Relais® L'
             24r: 'Point Relais® XL + L + Lockers'
-            24l: 'Points Relais qui proposent la livraison en Point Relais® XL '
-            xoh: 'Points Relais compatibles avec la livraison D+1 '
+            24l: 'Points Relais qui proposent la livraison en Point Relais® XL'
+            xoh: 'Points Relais compatibles avec la livraison D+1'
     colis_prive:
         search_placeholder: Saisissez un code postal
 
