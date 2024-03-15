@@ -42,7 +42,7 @@ monsieurbiz_advanced_shipping:
                 vous utilisez le mode inclusion, si le pays de l'adresse correspond à un pays de la règle, le tarif de 
                 la règle est appliqué. Si vous utilisez le mode exclusion, dans le cas où le pays de l'adresse ne 
                 correspond aucun pays de la règle, la règle est appliquée. Notez que seul le tarif de la 1ère règle 
-                valide rencontrée est appliqué. 
+                valide rencontrée est appliqué.
         customer_group_restriction:
             customer_group: Groupe client
         dpd_pickup_shiping_address_provider:
@@ -75,7 +75,7 @@ monsieurbiz_advanced_shipping:
             result_limit: 'Nombre de résultats'
             search_area: 'Zone de recherche (en km)'
             url: 'Url de l''API'
-        colis_prive_pickup_shipping_address_provider: 
+        colis_prive_pickup_shipping_address_provider:
             url: 'Url de l''API'
             account_id: Numéro de compte
             default_delay: 'Délais d''expédition par défaut'
@@ -97,7 +97,7 @@ monsieurbiz_advanced_shipping:
                 des codes postaux précis (80120,59160,60500) ou utiliser le caractère générique * (75* pour tout Paris ou 
                 2A*,2B*,20* pour la Corse). Si vous utilisez le mode inclusion, si un code postal correspond à un  masque, 
                 le tarif de la règle est appliqué. Si vous utilisez le mode exclusion, dans le cas où le code postal ne correspond à 
-                aucun masque, la règle est appliquée. Notez que seul le tarif de la 1ère règle valide rencontrée est appliqué. 
+                aucun masque, la règle est appliquée. Notez que seul le tarif de la 1ère règle valide rencontrée est appliqué.
         provider: Fournisseur
         shipping_address_provider: 'Fournisseur d''adresse d''expédition'
         table_rate_calculator_configuration:
@@ -177,7 +177,14 @@ monsieurbiz_advanced_shipping:
             rel: 'Points Relais qui proposent la collecte en Point Relais®'
             med: 'Points Relais qui proposent la livraison en Point Relais® L'
             24r: 'Point Relais® XL + L + Lockers'
-            24l: 'Points Relais qui proposent la livraison en Point Relais® XL '
-            xoh: 'Points Relais compatibles avec la livraison D+1 ' 
+            24l: 'Points Relais qui proposent la livraison en Point Relais® XL'
+            xoh: 'Points Relais compatibles avec la livraison D+1'
     colis_prive:
         search_placeholder: Saisissez un code postal
+
+sylius_plus:
+    rbac:
+        parent:
+            shipping_address_provider_configurations: 'Configurations des fournisseurs d''adresses'
+            shipping_calculator_configurations: 'Configurations des calculateurs'
+            shipping_types: 'Types d''expédition'

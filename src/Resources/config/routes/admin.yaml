@@ -13,7 +13,7 @@ monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration:
                 templates:
                     form: "@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/_form.html.twig"
     type: sylius.resource
-    
+
 monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_create:
     path: /calculator-configurations/new/{calculator}
     methods: [GET, POST]
@@ -34,13 +34,6 @@ monsieurbiz_advanced_shipping_admin_shipping_calculator_configuration_create:
                 route:
                     parameters:
                         calculator: $calculator
-
-monsieurbiz_advanced_shipping_admin_get_shipping_calculators:
-    path: /shipping-calculators
-    methods: [GET]
-    defaults:
-        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingCalculatorController::getListAction
-        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/Calculator/list.html.twig'
 
 monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration:
     resource: |
@@ -79,13 +72,6 @@ monsieurbiz_advanced_shipping_admin_shipping_address_provider_configuration_crea
                     parameters:
                         provider: $provider
 
-monsieurbiz_advanced_shipping_admin_get_shipping_address_providers:
-    path: /shipping-adress-providers
-    methods: [GET]
-    defaults:
-        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\ShippingAddressProviderController::getProviderListAction
-        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/AddressProvider/list.html.twig'
-        
 monsieurbiz_advanced_shipping_admin_shipping_type:
     resource: |
         alias: monsieurbiz_advanced_shipping.shipping_type
@@ -138,9 +124,6 @@ monsieurbiz_advanced_shipping_admin_map_provider_configuration_create:
                     parameters:
                         provider: $provider
 
-monsieurbiz_advanced_shipping_admin_get_map_providers:
-    path: /map-providers
-    methods: [GET]
-    defaults:
-        _controller: MonsieurBiz\SyliusAdvancedShippingPlugin\Controller\MapProviderController::getProviderListAction
-        template: '@MonsieurBizSyliusAdvancedShippingPlugin/Admin/MapProvider/list.html.twig'
+monsieurbiz_advanced_shipping_admin_partial:
+    resource: "@MonsieurBizSyliusAdvancedShippingPlugin/Resources/config/routes/admin/partial.yaml"
+    prefix: /_partial
