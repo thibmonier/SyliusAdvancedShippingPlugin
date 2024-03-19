@@ -34,7 +34,7 @@ class ShippingAddressProviderConfiguration implements ShippingAddressProviderCon
 
     protected array $configuration = [];
 
-    /***
+    /**
      * @var \DateTimeInterface|null
      */
     protected $createdAt;

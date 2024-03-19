@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Extension;
 
-use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingAddressProviderConfiguration;
 use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingAddressProviderConfigurationInterface;
-use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingType;
 use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\ShippingTypeInterface;
 use Sylius\Bundle\ShippingBundle\Form\Type\ShippingMethodType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
