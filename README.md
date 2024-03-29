@@ -4,3 +4,12 @@
 
 The missing plugin for advanced shipping methods in Sylius
 
+## Installation
+
+Install the plugin with composer:
+
+```
+composer require monsieurbiz/sylius-advanced-shipping-plugin
+```
+
+And follow the [installation documentation](docs/installation.md).
