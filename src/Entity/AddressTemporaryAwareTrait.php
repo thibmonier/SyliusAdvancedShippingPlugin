@@ -25,8 +25,7 @@ trait AddressTemporaryAwareTrait
 
     /**
      * @ORM\ManyToOne(targetEntity=OrderInterface::class, inversedBy="temporaryAddresses")
-     *
-     * @ORM\JoinColumn(name="source_order_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="source_order_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private ?OrderInterface $sourceOrder = null;
 
