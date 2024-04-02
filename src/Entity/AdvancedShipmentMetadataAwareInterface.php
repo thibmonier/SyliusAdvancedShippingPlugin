@@ -17,7 +17,7 @@ interface AdvancedShipmentMetadataAwareInterface
 {
     public function getAdvancedShippingMetadata(): array;
 
-    public function setAdvancedShippingMetadata(array $advancedShippingMetadata): void;
+    public function setAdvancedShippingMetadata(?array $advancedShippingMetadata): void;
 
     public function setProviderMetadata(string $code, string $key, ?string $value): void;
 

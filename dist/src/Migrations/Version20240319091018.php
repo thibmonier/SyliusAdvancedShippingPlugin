@@ -19,7 +19,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230906122033 extends AbstractMigration
+final class Version20240319091018 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -32,19 +32,17 @@ final class Version20230906122033 extends AbstractMigration
         $this->addSql('ALTER TABLE sylius_address ADD source_order_id INT DEFAULT NULL, ADD pickup_point_type VARCHAR(255) DEFAULT NULL, ADD pickup_point_code VARCHAR(255) DEFAULT NULL, ADD temporary TINYINT(1) DEFAULT 0 NOT NULL');
         $this->addSql('ALTER TABLE sylius_address ADD CONSTRAINT FK_B97FF058CEBF5BEA FOREIGN KEY (source_order_id) REFERENCES sylius_order (id)');
         $this->addSql('CREATE INDEX IDX_B97FF058CEBF5BEA ON sylius_address (source_order_id)');
-        $this->addSql('ALTER TABLE sylius_shipment ADD advanced_shipping_metadata LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\'');
+        $this->addSql('ALTER TABLE sylius_shipment ADD advanced_shipping_metadata LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:array)\'');
         $this->addSql('ALTER TABLE sylius_shipping_method ADD shipping_address_provider_configuration_id INT DEFAULT NULL, ADD type_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE sylius_shipping_method ADD CONSTRAINT FK_5FB0EE11FABDC8CC FOREIGN KEY (shipping_address_provider_configuration_id) REFERENCES monsieurbiz_shipping_address_provider_config (id)');
         $this->addSql('ALTER TABLE sylius_shipping_method ADD CONSTRAINT FK_5FB0EE11C54C8C93 FOREIGN KEY (type_id) REFERENCES monsieurbiz_shipping_type (id)');
         $this->addSql('CREATE INDEX IDX_5FB0EE11FABDC8CC ON sylius_shipping_method (shipping_address_provider_configuration_id)');
         $this->addSql('CREATE INDEX IDX_5FB0EE11C54C8C93 ON sylius_shipping_method (type_id)');
-        $this->addSql('ALTER TABLE messenger_messages CHANGE created_at created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', CHANGE available_at available_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', CHANGE delivered_at delivered_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\'');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE messenger_messages CHANGE created_at created_at DATETIME NOT NULL, CHANGE available_at available_at DATETIME NOT NULL, CHANGE delivered_at delivered_at DATETIME DEFAULT NULL');
         $this->addSql('ALTER TABLE sylius_address DROP FOREIGN KEY FK_B97FF058CEBF5BEA');
         $this->addSql('DROP INDEX IDX_B97FF058CEBF5BEA ON sylius_address');
         $this->addSql('ALTER TABLE sylius_address DROP source_order_id, DROP pickup_point_type, DROP pickup_point_code, DROP temporary');

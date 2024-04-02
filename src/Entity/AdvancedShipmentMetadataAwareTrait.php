@@ -18,18 +18,18 @@ use Doctrine\ORM\Mapping as ORM;
 trait AdvancedShipmentMetadataAwareTrait
 {
     /**
-     * @ORM\Column(name="advanced_shipping_metadata", type="array")
+     * @ORM\Column(name="advanced_shipping_metadata", type="array", nullable=true)
      */
-    private array $advancedShippingMetadata = [];
+    private ?array $advancedShippingMetadata = [];
 
     public function getAdvancedShippingMetadata(): array
     {
-        return $this->advancedShippingMetadata;
+        return (array) $this->advancedShippingMetadata;
     }
 
-    public function setAdvancedShippingMetadata(array $advancedShippingMetadata): void
+    public function setAdvancedShippingMetadata(?array $advancedShippingMetadata): void
     {
-        $this->advancedShippingMetadata = $advancedShippingMetadata;
+        $this->advancedShippingMetadata = (array) $advancedShippingMetadata;
     }
 
     public function setProviderMetadata(string $code, string $key, ?string $value): void

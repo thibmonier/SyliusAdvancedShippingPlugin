@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusAdvancedShippingPlugin\Form\Type\AddressProvider;
 
-use MonsieurBiz\SyliusAdvancedShippingPlugin\Entity\MapProviderConfiguration;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -29,8 +28,7 @@ final class PickupPointProviderConfigurationType extends AbstractType
         private RepositoryInterface $mapProviderConfigurationRepository,
         #[Autowire(param: 'monsieurbiz_advanced_shipping.model.map_provider_configuration.class')]
         private string $mapProviderConfigurationClass,
-    )
-    {
+    ) {
     }
 
     /**
