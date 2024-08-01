@@ -8,7 +8,7 @@
         "php": "~8.0",
         "ext-dom": "*",
         "ext-simplexml": "*",
-        "sylius/sylius": ">=1.9 <1.13",
+        "sylius/sylius": ">=1.9 <1.14",
         "quentinbontemps/php-mondialrelay-api": "^1.0",
         "symfony/http-client": "^6.0"
     },
